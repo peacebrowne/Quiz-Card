@@ -24,7 +24,7 @@ body{
 }
 #card-btn{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     border: none;
     background: white;
     /* margin-bottom: 7%; */
@@ -127,7 +127,14 @@ body{
     display: flex;
     justify-content: space-between;
 }
-
+#finishBtn{
+    display: none;
+    width: 50%;
+}
+#nextBtn{
+    /* margin-left: auto; */
+    width: 50%;
+}
 .ans{
     width: 70%;
 }

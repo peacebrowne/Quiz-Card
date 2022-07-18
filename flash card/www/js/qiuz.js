@@ -333,15 +333,36 @@ const options_btns = document.querySelectorAll('.option')
 
 options_btns.forEach(btn =>{
     btn.addEventListener('click', () =>{
-       let correct = correct_answer(btn)
+
+        let checked = checked_already()
+        if(checked == 'checked') return;
+        
+        let correct = correct_answer(btn)
         if (correct == 'correct') return;
 
-       let wrong =  wrong_answer(btn)
-       if (wrong == 'wrong') return;
+        let wrong =  wrong_answer(btn)
+        if (wrong == 'wrong') return;
        
     })
 })
 
+// check if ans already selected
+const checked_already = () =>{
+
+    for(const btn of checks){
+
+        if(btn.style.display == 'flex') {
+            Swal.fire({
+                icon: 'error',
+                title: `Answer Already Selected`,
+                confirmButtonText: "Close"
+            })
+            return 'checked'
+        }
+
+    }
+
+}
 
 // correct ans
 const correct_answer = btn =>{
@@ -357,6 +378,10 @@ const correct_answer = btn =>{
 
 }
 
+const right_answers = document.querySelectorAll('.correct')
+let prev_correct_ans;
+let prev_wrong_ans;
+
 // wrong ans
 const wrong_answer = btn =>{
 
@@ -364,25 +389,47 @@ const wrong_answer = btn =>{
     let ans = btn.nextElementSibling.textContent
 
     if(ans != hidden_ans.textContent){
+
         wrong.style.display = 'flex'
-        return 'wrong';
+        prev_wrong_ans = ans
+        
+    }
+
+    for(const correct of right_answers){
+       
+        let answer = correct.previousElementSibling.textContent;
+        if(answer === hidden_ans.textContent){
+            correct.style.display = 'flex'
+            prev_correct_ans = answer
+            return 'wrong';
+        }
+
     }
 
 }
 
 
+
 const next_btn = document.querySelector('#card-btn #nextBtn')
-const prev_btn = document.querySelector('#card-btn #prevBtn')
+const finishBtn = document.querySelector('#card-btn #finishBtn')
+
 
 
 const next_question = ev =>{
 
     ev.preventDefault();
+    let compulsary = compulsary_ans();
+    if(compulsary == 'no ans') return;
+
+
     question_number.textContent = +question_number.textContent + 1;
     let id = +question_bar.id;
     let next = random_question[id+1]
-    question_bar.id = id+1
 
+    let game_over = quiz_over(id+1,random_question.length)
+    if(game_over == 'quiz finish') return;
+
+    question_bar.id = id+1
     question_bar.textContent = next.question;
 
     optionA.textContent = next.optionA
@@ -395,11 +442,51 @@ const next_question = ev =>{
 }
 next_btn.addEventListener('click',next_question)
 
+const quiz_over = (qi,ql) =>{
 
-const previous_question = ev =>{
+    let n = +qi;
+    let l = ql;
 
-    ev.preventDefault();
-    console.log('Random Questions:',random_question)
+    if(n === l){
+
+        Swal.fire({
+            title: `GAME OVER`,
+            confirmButtonText: "OK"
+        })
+        hideElement('#nextBtn')
+        showElement('#finishBtn')
+        return 'quiz finish'
+    }
 
 }
-prev_btn.addEventListener('click',previous_question)
+
+const compulsary_ans = () =>{
+
+    let counter = 0;
+    for(const btn of checks){
+
+        if(btn.style.display == '' || btn.style.display == 'none') counter++
+
+    }
+  
+
+    if(counter === checks.length) {
+
+        Swal.fire({
+            icon: 'error',
+            title: `Please Select Answer`,
+            confirmButtonText: "Close"
+        })
+        return 'no ans'
+
+    }
+
+}
+
+const finish_questions = ev =>{
+
+    ev.preventDefault();
+    // console.log('Random Questions:',random_question)
+    hideElement('')
+}
+finishBtn.addEventListener('click',finish_questions)

@@ -179,7 +179,7 @@ const storedUserData = data => {
 
 };
 
-localStorage
+// localStorage
 
 // creating table in db for user added question
 const added_question_table = mail =>{
