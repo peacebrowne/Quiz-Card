@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TESTER</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <!-- End plugin css for this page -->
+    <link rel="stylesheet" href="./library/css/bootstrap-grid.min.css">
+    <!-- <link rel="stylesheet" href="./library/css/bootstrap-grid.min.css"> -->
+    <link rel="stylesheet" href="assets/css/mdb.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- <link rel="stylesheet" href="assets/css/collect-section.css"> -->
+    <link rel="stylesheet" href="../fontawesome-free-5.10.2-web/css/all.min.css">
+    <link rel="stylesheet" href="./css/card.css">
+</head>
+
+<body>
+    
+    <header id="head" class="form-control">  
+        <section id="dropdown-icon">
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa fa-bars"></i></button>
+                <div class="dropdown-content">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+                  <a href="#" id="log-out">Log out</a>
+                </div>
+            </div> 
+        </section> 
+        <section id="quiz-back-icon" style="display: none;">
+            <div class="back-icon">
+                <i class="fa fa-long-arrow-alt-left"></i>
+            </div>
+        </section>
+
+        <section id="view-back-icon" style="display: none;">
+            <div class="back-icon">
+                <i class="fa fa-long-arrow-alt-left"></i>
+            </div>
+        </section>
+
+        <section id="edit-back-icon" style="display: none;">
+            <div class="back-icon">
+                <i class="fa fa-long-arrow-alt-left"></i>
+            </div>
+        </section>
+
+        <section id="add-back-icon" style="display: none;">
+            <div class="back-icon">
+                <i class="fa fa-long-arrow-alt-left"></i>
+            </div>
+        </section>
+
+        <section id="card-back-icon" style="display: none;">
+            <div class="back-icon">
+                <i class="fa fa-long-arrow-alt-left"></i>
+            </div>
+        </section>
+
+        <section id="search-form" style="display: none;">
+            <div id="search">
+                <form id="doctorSearchBox" action="">
+                    <input id="searchBox" type="search" placeholder="search..." required>
+                    <i class="fa fa-search"></i>
+                </form>
+            </div>
+        </section>
+
+        <section id="initial">
+            <div id="name-initial" class="form-control">
+                <span><strong></strong></span>
+            </div>
+        </section>
+
+    </header>
+
+    <!-- HOME SECTION -->
+
+    <section id="home-section">
+        <section id="home" class="form-control">
+        
+            <section class="sections form-control btn btn-primary" id="quiz">
+                <span>QUIZ</span>
+            </section>
+            <section class="sections form-control btn btn-primary" id="add-question">
+               <span> ADD QUESTION</span>
+            </section>
+
+            <section class="sections form-control btn btn-primary" id="view-question">
+                <span>VIEW QUESTIONS</span>
+            </section>
+        </section>
+    </section>
+
+
+    <!-- ADD QUESTION SECTION -->
+    <section id="add-question-section" style="display: none;">
+
+        <div class="form-control title">
+            <span>ADD QUESTION</span>
+        </div>
+
+        <div class="card" id="add-question-option">
+            <form action="">
+                <div class="form-group">
+                    <label class="control-label">TOPIC</label>
+                    <input id="topic" name="topic" class="form-control" type="text" placeholder="topic..." autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">QUESTION</label>
+                    <textarea class="form-control" name="question" id="quiz-question" cols="30" rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">OPTION-A</label>
+                    <input id="option-A" name="optionA" class="form-control" type="text" placeholder="Option-a..." autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">OPTION-B</label>
+                    <input id="option-B" name="optionB" class="form-control" type="text" placeholder="Option-b..." autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">OPTION-C</label>
+                    <input id="option-C" name="optionC" class="form-control" type="text" placeholder="Option-c..." autofocus>
+                </div>
+
+                <div class="form-group">
+                    <select name="correctAnswer" id="correctAnswer" class="form-control" style="height: 50px;">
+                        <option selected disabled>Please select Correct Answer...</option>
+                        <option value="option-A">OPTION-A</option>
+                        <option value="option-B">OPTION-B</option>
+                        <option value="option-C">OPTION-C</option>
+                    </select>
+                </div>
+
+            </form>
+            
+            <a href="#" id="submit-btn" class="btn btn-primary">SUBMIT</a>
+            
+        </div>
+
+    </section>
+
+    <!-- EDIT QUESTION -->
+    <section id="edit-question-section" style="display: none;">
+
+        <div class="form-control title">
+            <span>EDIT QUESTION</span>
+        </div>
+
+        <div class="card" id="edit-question-option">
+            <form action="">
+                <div class="form-group">
+                    <label class="control-label">TOPIC</label>
+                    <input id="topic" name="topic" class="form-control" type="text" placeholder="topic..." autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">QUESTION</label>
+                    <textarea class="form-control" name="question" id="quiz-question" cols="30" rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">OPTION-A</label>
+                    <input id="option-A" name="optionA" class="form-control" type="text" placeholder="Option-a..." autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">OPTION-B</label>
+                    <input id="option-B" name="optionB" class="form-control" type="text" placeholder="Option-b..." autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">OPTION-C</label>
+                    <input id="option-C" name="optionC" class="form-control" type="text" placeholder="Option-c..." autofocus>
+                </div>
+
+                <div class="form-group">
+                    <select name="correctAnswer" id="correctAnswer" class="form-control" style="height: 50px;">
+                        <option selected disabled>Please select Correct Answer...</option>
+                        <option value="option-A">OPTION-A</option>
+                        <option value="option-B">OPTION-B</option>
+                        <option value="option-C">OPTION-C</option>
+                    </select>
+                </div>
+
+               
+            </form>
+            
+            <a href="#" id="submit-btn" class="btn btn-primary">SUBMIT</a>
+            
+        </div>
+
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section id="form-options-section" style="display: none;">
+
+        <div class="form-control title">
+            <span>QUIZ</span>
+        </div>
+
+        <div class="card" id="select-options">
+                <form action="">
+                    <div class="form-group">
+                        <label class="control-label">TOPICS</label>
+                        <select name="topic" id="" class="form-control" style="height: 50px;">
+                            <option selected disabled>Please select topic..</option>
+                            
+                        </select>
+                    </div>
+   
+                    <div class="form-group">
+                        <label class="control-label">NUMBER OF QUESTIONS</label>
+                        <input id="number-of-questions" name="numberQ" class="form-control" type="number" placeholder="Please select your number of questions..." autofocus>
+                    </div>
+                    
+                </form>
+               
+                <a href="#" id="start-btn" class="btn btn-primary">START</a>
+        </div>
+
+    </section>
+
+    <!-- VIEW QUESTION -->
+    <section id="view-question-section">
+        
+        <div class="form-control title">
+            <span>VIEW QUESTION</span>
+        </div>
+
+    </section>
+
+    <!-- CARD BODY -->
+    <section id="card" style="display: none;">
+        <div id="header" class="form-control">
+            <div class="form-control" id="score"><span>score:</span><span>0</span></div>
+            <a href="#" id="showAndHideAns" class="btn btn-primary">show ans</a>
+        </div>
+
+        <div class="card" style="width: 100%;  margin: 5% auto;">
+            <div class="card-body" id="card-body">
+                <div class="form-control" id="question-bar">
+                    <div class="form-control num"><span></span></div>
+
+                    <span class="question form-control">
+                        <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit.  -->
+                    </span>
+                </div>
+
+                <div class="form-control" id="ans-bar">
+                    <div class="answers form-control">
+                        <a href="#" class="btn btn-primary option">A</a>
+                        <span id="optionA" class="ans form-control">
+                            <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit.  -->
+                        </span>
+                        <div class="form-control check correct"><span><i class="fa fa-check"></i></span></div>
+                        <div class="form-control check wrong"><span><i class="fa fa-times"></i></span></div>
+
+                    </div>
+                    <div class="answers form-control">
+                        <a href="#" class="btn btn-primary option">B</a>
+                        <span id="optionB" class="ans form-control">
+                            <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit.  -->
+                        </span>
+                        <div class="form-control check correct"><span><i class="fa fa-check"></i></span></div>
+                        <div class="form-control check wrong"><span><i class="fa fa-times"></i></span></div>
+
+                    </div>
+                    <div class="answers form-control">
+                        <a href="#" class="btn btn-primary option">C</a>
+                        <span id="optionC" class="ans form-control">
+                            <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit.  -->
+                        </span>
+                        <div class="form-control check correct"><span><i class="fa fa-check"></i></span></div>
+                        <div class="form-control check wrong"><span><i class="fa fa-times"></i></span></div>
+
+                    </div>
+                
+                </div>
+
+            
+            </div>
+            <div id="card-btn" class="form-control">
+                <a href="#" id="prevBtn" class="btn btn-primary">prev</a>
+                <a href="#" id="nextBtn" class="btn btn-primary">next</a>
+            </div>
+        </div>
+
+        <section id="hidden_ans" style="display: none;">
+
+            <div id="showAns" class="form-control">
+                <span>
+                    Correct Answer
+                </span>
+            </div>
+
+        </section>
+
+    </section>
+
+    <section id="profile" class="form-control" style="display: none;">
+
+    </section>
+
+    <!-- <footer id="footer" class="form-control">
+
+        <div class="footer-icon">
+            <i class="fa fa-home"></i>add-questions
+            <span>Home</span>
+        </div>
+        <div class="footer-icon">
+            <i class="fa fa-copyright"></i>
+            <span>Card</span>
+        </div>
+        <div class="footer-icon">
+            <i class="fa fa-book"></i>
+            <span>+Question</span>
+        </div>
+
+    </footer> -->
+
+    <script src="./js/card.js"></script>
+    <script src="./js/custom.js"></script>
+    <script src="./assets/js/sweet-alert.js"></script>
+    <script src="./js/qiuz.js"></script>
+    <script src="./library/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

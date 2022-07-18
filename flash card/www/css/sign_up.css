@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#sign-up{
+    /* margin: 40px auto; */
+    /* margin: 3% auto; */
+    width: 90%;
+}
+#login{
+    margin: 40px auto;
+    /* margin: 3% auto; */
+    width: 90%;
+}
+.card{
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+
+}
+.card a{
+    margin: 0px auto 5% auto;
+    width: 80%;
+}
+#other-opt{
+    width: 90%;
+    height: 30px;
+    background-color: white;
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+    /* margin: 2% auto; */
+    margin-top: -5%;
+    margin-bottom: 5%;
+
+}
+.signUp-head{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+    font-weight: bold;
+}
+form{
+    /* height: 600px; */
+    padding: 7% auto;
+    margin-bottom: 5%;
+
+}
+
+.form-group{
+    margin: 3% auto;
+    width: 90%;
+}
+
+.form-head{
+    width: 103%;
+    margin-left: -3.3%;
+    margin-top: -1%;
+    background-color: #1266f1;
+    color: white;
+}
+
+main{
+    margin: 0px auto;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

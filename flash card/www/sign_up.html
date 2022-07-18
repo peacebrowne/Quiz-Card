@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- plugins:css -->
+      <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+      <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+      <!-- endinject -->
+      <!-- Plugin css for this page -->
+      <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+      <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+      <!-- End plugin css for this page -->
+  
+      <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" /> -->
+  
+      <link rel="stylesheet" href="assets/css/mdb.min.css">
+      <link rel="stylesheet" href="assets/css/custom.css">
+  
+      <link rel="stylesheet" href="assets/css/collect-section.css">
+      <link rel="stylesheet" href="../fontawesome-free-5.10.2-web/css/all.min.css">
+      
+    <link rel="stylesheet" href="./css/sign_up.css">
+    <title>TESTER SIGN-UP</title>
+</head>
+<body>
+
+    <main>
+        
+        <section id="login">
+            <div class="card" style="width: 100%;">
+                <div class="form-control form-head">
+                 <h3 class="signUp-head"><i class="fa fa-lg fa-fw fa-user"></i>LOGIN</h3>
+    
+                </div>
+                 <form action="">
+                     <div class="form-group">
+                         <label class="control-label">EMAIL</label>
+                         <input id="email" name="email" class="form-control" type="email" placeholder="email" autofocus>
+                     </div>
+                     <div class="form-group">
+                         <label class="control-label">PASSWORD</label>
+                         <input id="password" name="password" class="form-control" type="password" placeholder="password" autofocus>
+                     </div>
+                     
+                 </form>
+
+                 <div id="other-opt" class="form-control">
+                     <a href="#" id="signUp-link">Sign Up</a>
+                     <a href="#" id="forget-link">Forget Password ?</a>
+                 </div>
+                 <a href="#" id="submitBtn" class="btn btn-primary">LOGIN</a>
+    
+                
+             </div>
+        </section>
+
+        <section id="forget-password" style="display: none;">
+            <div class="card" style="width: 100%;">
+                <div class="form-control form-head">
+                 <h3 class="signUp-head"><i class="fa fa-lg fa-fw fa-user"></i>FORGET PASSWORD</h3>
+    
+                </div>
+                 <form action="">
+                     <div class="form-group">
+                         <label class="control-label">Please enter your email</label>
+                         <input id="email" name="email" class="form-control" type="email" placeholder="email" autofocus>
+                     </div>
+                    
+                 </form>
+
+                 <div id="other-opt" class="form-control">
+                    <a href="#" id="login-link">Login</a>
+                    <!-- <a href="#" id="forget-link">Forget Password ?</a> -->
+                </div>
+                 <a href="#" id="submitBtn"  class="btn btn-primary">SUBMIT</a>
+    
+                
+             </div>
+        </section>
+
+
+        <section id="reset-password" style="display: none;">
+            <div class="card" style="width: 100%;">
+                <div class="form-control form-head">
+                 <h3 class="signUp-head"><i class="fa fa-lg fa-fw fa-user"></i>RESET PASSWORD</h3>
+    
+                </div>
+                 <form action="">
+                     <div class="form-group">
+                         <label class="control-label">Please enter your new password</label>
+                         <input id="password" name="password" class="form-control" type="password" placeholder="password" autofocus>
+                     </div>
+                    
+                 </form>
+
+                 <div id="other-opt" class="form-control">
+                    <a href="#" id="login-link">Login</a>
+                    <!-- <a href="#" id="forget-link">Forget Password ?</a> -->
+                </div>
+                 <a href="#" id="submitBtn"  class="btn btn-primary">SUBMIT</a>
+    
+                
+             </div>
+        </section>
+    
+        <section style="display: none;" id="sign-up">
+            
+                <div class="card" style="width: 100%;">
+                   <div class="form-control form-head">
+                    <h3 class="signUp-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN UP</h3>
+    
+                   </div>
+                    <form action="">
+                        <div class="form-group">
+                            <label class="control-label">FIRST NAME</label>
+                            <input id="firstname" name="firstname" class="form-control" type="text" placeholder="firstname" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">LAST NAME</label>
+                            <input id="lastname"  name="lastname" class="form-control" type="text" placeholder="lastname" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">USERNAME</label>
+                            <input id="username"  name="username" class="form-control" type="text" placeholder="username" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">EMAIL</label>
+                            <input id="email"  name="email" class="form-control" type="email" placeholder="email" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">CONTACT</label>
+                            <input id="contact" name="contact" class="form-control" type="tel" placeholder="contact" maxlength="10" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">PASSWORD</label>
+                            <input id="password" name="password" class="form-control" type="password" placeholder="password" autofocus>
+                        </div>
+                        
+                    </form>
+                    <div id="other-opt" class="form-control">
+                        <a href="#" id="login-link">Login</a>
+                        <!-- <a href="#" id="forget-link">Forget Password ?</a> -->
+                    </div>
+                    <a href="#" id="submitBtn" class="btn btn-primary">SUBMIT</a>
+                   
+                </div>
+    
+        </section>
+    </main>
+        <!-- <script src="./js/card.js"></script> -->
+        <script src="./js/signup.js"></script>
+        <script src="./js/custom.js"></script>
+        <script src="./assets/js/sweet-alert.js"></script>
+</body>
+</html>
