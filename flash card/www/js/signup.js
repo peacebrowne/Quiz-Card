@@ -84,26 +84,23 @@ const  signUp = () => {
     let userData = {};
     input_data = document.querySelectorAll('#sign-up form input')
 
-    for(let i = 0; i < input_data.length; i++){
-
-        const data = input_data[i]
-    
-        if(data.value === ''){
-
-             Swal.fire({
+    for(const input of input_data){
+        
+        if(input.value === ''){
+            
+            Swal.fire({
                 icon: 'erroreadDatabaser',
-                title: `Please enter the ${data.name} field`,
+                title: `Please enter the ${input.name} field`,
                 confirmButtonText: "Close"
             })
             return ;
+            
         }
-        
-        userData[data.name] = data.value;
+        userData[input.name] = input.value;
 
     }
+    return userData;
    
-    return userData
-
 }
 
 
@@ -195,7 +192,7 @@ const added_question_table = mail =>{
 }
 
 // storing user email in local storage
-const localStore = (email,fn,ln,un) =>{
+const localStore = (email,un) =>{
 
     // store email in localstorage
     // localStorage.setItem('initial', Array.from(fn)[0].toUpperCase() + Array.from(ln)[0].toUpperCase())
@@ -260,24 +257,22 @@ const login = () => {
     let userData = {};
     input_data = document.querySelectorAll('#login form input')
 
-    for(let i = 0; i < input_data.length; i++){
-        const data = input_data[i]
-
-        if(data.value === ''){
-
-             Swal.fire({
-                icon: 'error',
-                title: `Please enter the ${data.name} field`,
+    for(const input of input_data){
+        
+        if(input.value === ''){
+            
+            Swal.fire({
+                icon: 'erroreadDatabaser',
+                title: `Please enter the ${input.name} field`,
                 confirmButtonText: "Close"
             })
             return ;
+            
         }
-
-        userData[data.name] = data.value;
+        userData[input.name] = input.value;
 
     }
-
-    return userData
+    return userData;
 
 }
 
@@ -305,7 +300,7 @@ const login_validation = data =>{
         }
 
         if(result.password === data.password){
-            localStore(data.email,result.firstname,result.lastname,result.username)
+            localStore(data.email,result.username)
 
             Swal.fire({
                 title: `Thanks for logging in `,
@@ -343,22 +338,21 @@ login_btn.addEventListener('click', ev => {
 const forget_password = () => {
     input_data = document.querySelectorAll('#forget-password form input')
     let userData = {}
-   
-    for (let i = 0; i < input_data.length; i++) {
-        const data = input_data[i]
 
-        if(data.value === ''){
-
+    for(const input of input_data){
+        
+        if(input.value === ''){
+            
             Swal.fire({
                 icon: 'erroreadDatabaser',
-                title: `Please enter the ${data.name} field`,
+                title: `Please enter the ${input.name} field`,
                 confirmButtonText: "Close"
             })
             return ;
+            
         }
-   
-        userData[data.name] = data.value;
-       
+        userData[input.name] = input.value;
+
     }
     return userData;
 
@@ -401,6 +395,7 @@ forgetPwd_btn.addEventListener('click', ev => {
 
     ev.preventDefault()
     forgetPwd_validation(forget_password())
+
 })
 
 
