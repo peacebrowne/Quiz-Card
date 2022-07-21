@@ -163,7 +163,6 @@ const validate_numbOfQ_and_topic = (t,n) =>{
         return ;
     }
 
-
     generate_random_question(t)
 
 }
@@ -205,7 +204,6 @@ const generate_random_question = data =>{
             rn = generateRandomNumber(tl)
             random_question.push(st[rn])
             st.splice(rn,1)
-
 
         }
 
@@ -421,33 +419,34 @@ const next_question = ev =>{
     let compulsary = compulsary_ans();
     if(compulsary == 'no ans') return;
 
+    let qn = +question_number.textContent;
+    let next = qn;
+    let game_over = quiz_over(next)
 
-    question_number.textContent = +question_number.textContent + 1;
-    let id = +question_bar.id;
-    let next = random_question[id+1]
-
-    let game_over = quiz_over(id+1,random_question.length)
+    
     if(game_over == 'quiz finish') return;
+    
 
-    question_bar.id = id+1
-    question_bar.textContent = next.question;
+    question_number.textContent = next+1;
+    question_bar.id = next;
+    
+    let next_question = random_question[next];
+    question_bar.textContent = next_question.question;
 
-    optionA.textContent = next.optionA
-    optionB.textContent = next.optionB
-    optionC.textContent = next.optionC
-    let ca = get_correct_answer(next)
+
+    optionA.textContent = next_question.optionA
+    optionB.textContent = next_question.optionB
+    optionC.textContent = next_question.optionC
+    let ca = get_correct_answer(next_question)
     hidden_ans.textContent = ca;
     checks.forEach(c => c.style.display = 'none')
 
 }
 next_btn.addEventListener('click',next_question)
 
-const quiz_over = (qi,ql) =>{
+const quiz_over = (next) =>{
 
-    let n = +qi;
-    let l = ql;
-
-    if(n === l){
+    if(random_question[next] === undefined){
 
         Swal.fire({
             title: `GAME OVER`,
@@ -456,6 +455,7 @@ const quiz_over = (qi,ql) =>{
         hideElement('#nextBtn')
         showElement('#finishBtn')
         return 'quiz finish'
+
     }
 
 }
@@ -469,7 +469,6 @@ const compulsary_ans = () =>{
 
     }
   
-
     if(counter === checks.length) {
 
         Swal.fire({
@@ -483,10 +482,15 @@ const compulsary_ans = () =>{
 
 }
 
-const finish_questions = ev =>{
+const restart_quiz = ev =>{
 
     ev.preventDefault();
-    // console.log('Random Questions:',random_question)
-    hideElement('')
+    hideElement('#finishBtn');
+    showElement('#nextBtn');
+
+    display__first_questions(random_question)
+    checks.forEach(c => c.style.display = 'none')
+    score.textContent = 0;
+  
 }
-finishBtn.addEventListener('click',finish_questions)
+finishBtn.addEventListener('click',restart_quiz)

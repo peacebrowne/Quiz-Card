@@ -4,14 +4,11 @@ body{
 }
 
 #sign-up{
-    /* margin: 40px auto; */
-    /* margin: 3% auto; */
-    width: 90%;
+    width: 95%;
 }
 #login{
-    margin: 40px auto;
-    /* margin: 3% auto; */
-    width: 90%;
+    margin: 0px auto;
+    width: 100%;
 }
 .card{
     display: flex;
@@ -30,7 +27,6 @@ body{
     border: none;
     display: flex;
     justify-content: space-evenly;
-    /* margin: 2% auto; */
     margin-top: -5%;
     margin-bottom: 5%;
 
@@ -42,7 +38,6 @@ body{
     font-weight: bold;
 }
 form{
-    /* height: 600px; */
     padding: 7% auto;
     margin-bottom: 5%;
 
@@ -54,9 +49,7 @@ form{
 }
 
 .form-head{
-    width: 103%;
-    margin-left: -3.3%;
-    margin-top: -1%;
+    width: 100%;
     background-color: #1266f1;
     color: white;
 }
@@ -68,4 +61,37 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+#signUp-link{
+    margin-left: 5%;
+}
+#forget-link{
+    margin-right: -20%;
+}
+#other-opt a{
+    text-decoration: none;
+}
+#other-opt a:hover{
+    border-bottom: 1px solid #1266f1;
+}
+
+#forget-password{
+    display: none;
+    background-color: whitesmoke;
+    border: none;
+}
+#forget-password .card{
+    height: 300px;
+    margin: 0 auto;
+}
+
+#forget-password #other-opt{
+    width: 50%;
+    margin-left: 6%;
+    margin-right: auto;
+    text-align: left;
+}
+#reset-password{
+    border: none;
+    background-color: whitesmoke;
 }

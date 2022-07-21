@@ -12,18 +12,24 @@
 </head>
 
 <body>
-    <header id="head" class="form-control">  
+    <header id="head" class="form-control bg">  
         <section id="dropdown-icon">
             <div class="dropdown">
                 <button class="dropbtn"><i class="fa fa-bars"></i></button>
                 <div class="dropdown-content">
                   <a href="#">Link 1</a>
                   <a href="#">Link 2</a>
-                  <a href="#">Change Background color</a>
-                  <a href="#" id="log-out">Log out</a>
+                  <a href="#" id="bg-color"> <i class="fa fa-closed-captioning"></i> Change Background color</a>
+                  <a href="#" id="log-out"><i class="fa fa-sign-out-alt"></i> Log out</a>
                 </div>
             </div> 
         </section> 
+        <section id="colors-back-icon" style="display: none;">
+            <div class="back-icon">
+                <i class="fa fa-long-arrow-alt-left"></i>
+            </div>
+        </section>
+
         <section id="quiz-back-icon" style="display: none;">
             <div class="back-icon">
                 <i class="fa fa-long-arrow-alt-left"></i>
@@ -75,15 +81,15 @@
     <section id="home-section">
         <section id="home" class="form-control">
         
-            <section class="sections form-control btn btn-primary" id="quiz">
-                <span>QUIZ</span>
+            <section class="sections form-control bg btn btn-primary" id="quiz">
+                <span> <i class="fa fa-book"></i> QUIZ</span>
             </section>
-            <section class="sections form-control btn btn-primary" id="add-question">
-               <span> ADD QUESTION</span>
+            <section class="sections form-control bg btn btn-primary" id="add-question">
+               <span><i class="fa fa-plus"></i> ADD QUESTION</span>
             </section>
 
-            <section class="sections form-control btn btn-primary" id="view-question">
-                <span>VIEW QUESTIONS</span>
+            <section class="sections form-control bg btn btn-primary" id="view-question">
+                <span><i class="fa fa-street-view"></i> VIEW QUESTIONS</span>
             </section>
         </section>
     </section>
@@ -133,7 +139,7 @@
 
             </form>
             
-            <a href="#" id="submit-btn" class="btn btn-primary">SUBMIT</a>
+            <a href="#" id="submit-btn" class="btn btn-primary bg">SUBMIT</a>
             
         </div>
 
@@ -184,7 +190,7 @@
                
             </form>
             
-            <a href="#" id="submit-btn" class="btn btn-primary">SUBMIT</a>
+            <a href="#" id="submit-btn" class="btn btn-primary bg">SUBMIT</a>
             
         </div>
 
@@ -201,7 +207,7 @@
                 <form action="">
                     <div class="form-group">
                         <label class="control-label">TOPICS</label>
-                        <select name="topic" id="" class="form-control" style="height: 50px;">
+                        <select name="topic" id="select-topic" class="form-control" style="height: 50px;">
                             <option selected disabled>Please select topic..</option>
                             
                         </select>
@@ -214,7 +220,7 @@
                     
                 </form>
                
-                <a href="#" id="start-btn" class="btn btn-primary">START</a>
+                <a href="#" id="start-btn"  class="btn btn-primary bg">START</a>
         </div>
 
     </section>
@@ -232,10 +238,10 @@
     <section id="card" style="display: none; padding-bottom: 5%;">
         <div id="header" class="form-control">
             <div class="form-control" id="score"><span>score:</span><span>0</span></div>
-            <a href="#" id="showAndHideAns" class="btn btn-primary">show ans</a>
+            <a href="#" id="showAndHideAns" class="btn btn-primary bg">show ans</a>
         </div>
 
-        <div class="card" style="width: 100%;  margin: 5% auto; padding-bottom: 7%;">
+        <div class="card" style="width: 100%; border: none; margin: 5% auto; padding-bottom: 7%;">
             <div class="card-body" id="card-body">
                 <div class="form-control" id="question-bar">
                     <div class="form-control num"><span></span></div>
@@ -247,7 +253,7 @@
 
                 <div class="form-control" id="ans-bar">
                     <div class="answers form-control">
-                        <a href="#" class="btn btn-primary option">A</a>
+                        <a href="#" class="btn btn-primary bg option">A</a>
                         <span id="optionA" class="ans form-control">
                             <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit.  -->
                         </span>
@@ -256,7 +262,7 @@
 
                     </div>
                     <div class="answers form-control">
-                        <a href="#" class="btn btn-primary option">B</a>
+                        <a href="#" class="btn btn-primary bg option">B</a>
                         <span id="optionB" class="ans form-control">
                             <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit.  -->
                         </span>
@@ -265,7 +271,7 @@
 
                     </div>
                     <div class="answers form-control">
-                        <a href="#" class="btn btn-primary option">C</a>
+                        <a href="#" class="btn btn-primary bg option">C</a>
                         <span id="optionC" class="ans form-control">
                             <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit.  -->
                         </span>
@@ -279,8 +285,8 @@
             
             </div>
             <div id="card-btn" class="form-control">
-                <a href="#" id="finishBtn" class="btn btn-primary">Restart</a>
-                <a href="#" id="nextBtn" class="btn btn-primary">next</a>
+                <a href="#" id="finishBtn" class="btn btn-primary bg">Restart</a>
+                <a href="#" id="nextBtn" class="btn btn-primary bg">next</a>
             </div>
         </div>
 
@@ -299,28 +305,31 @@
     <section id="profile" class="form-control" style="display: none;">
 
     </section>
-
-    <!-- <footer id="footer" class="form-control">
-
-        <div class="footer-icon">
-            <i class="fa fa-home"></i>add-questions
-            <span>Home</span>
-        </div>
-        <div class="footer-icon">
-            <i class="fa fa-copyright"></i>
-            <span>Card</span>
-        </div>
-        <div class="footer-icon">
-            <i class="fa fa-book"></i>
-            <span>+Question</span>
+    
+    <!-- BACKGROUND COLOR -->
+    <section id="change-bg-color" class="form-control" >
+        <div class="form-control title">
+            <span>CHANGE COLORS</span>
         </div>
 
-    </footer> -->
+        <div class="form-control colors" id="default">
+           <span>DEFAULT</span>
+        </div>
+        <div class="form-control colors" id="grey">
+            <span>GREY</span>
+        </div>
+
+        <div class="form-control" id="bg-btn" >
+            <a href="#" id="set-bg-btn" class="btn btn-primary bg">SET</a>
+        </div>
+        
+    </section>
 
     <script src="./js/card.js"></script>
     <script src="./js/custom.js"></script>
     <script src="./js/sweet-alert.js"></script>
     <script src="./js/qiuz.js"></script>
+    <script src="./js/bgColors.js"></script>
     <script src="./bootstrap-5.2.0-beta1-dist/js/bootstrap.js"></script>
 
 </body>

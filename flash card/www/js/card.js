@@ -1,3 +1,4 @@
+
 // logging out
 const logOut = document.getElementById('log-out')
 logOut.addEventListener('click',()=>{

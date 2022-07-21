@@ -137,6 +137,7 @@ body{
 }
 .ans{
     width: 70%;
+    margin: 0 auto;
 }
 .question{
     width: 70%;
@@ -340,11 +341,12 @@ body{
 
 .edit-btn{
     background-color: #04AA6D;
+    border: none;
 }
 
 .delete-btn{
     background-color:rgb(170, 17, 17);
-
+    border: none;
 }
 
 .back-icon{
@@ -394,6 +396,8 @@ body{
   background-color: white;
   min-width: 300px;
   margin-left: -10px;
+  font-size: large;
+  font-weight: bold;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-top-right-radius: 20px;
@@ -409,7 +413,7 @@ body{
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {background-color: rgb(235, 231, 231);}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
@@ -482,3 +486,40 @@ body{
 #doctorSearchBox:valid  {
   display: block;
 }
+
+#change-bg-color{
+    display: none;
+    border: none;
+}
+#bg-btn{
+    border: none;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.colors{
+    border-radius: 30px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0px;
+    flex-wrap: wrap;
+    font-weight: bold;
+    color: white;
+    font-size: x-large;
+}
+#set-bg-btn{
+    width: 80%;
+    margin: 2% auto;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#default{
+    background-color: #1266f1;
+}
+#grey{
+    background-color:grey;
+}
+

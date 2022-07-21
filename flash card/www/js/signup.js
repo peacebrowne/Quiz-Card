@@ -72,6 +72,13 @@ request.addEventListener('upgradeneeded', ev =>{
        
     }
 
+    if(! db.objectStoreNames.contains('userColor')){
+        objectStore = db.createObjectStore('userColor', {
+            keyPath: 'email'
+        })
+    
+    }
+
    
     
 })
@@ -131,7 +138,6 @@ const signUp_validation = data => {
             storedUserData(data);
             return ;
         }
-        readwrite
         if(result.email === data.email){
             Swal.fire({
                 icon: 'error',
@@ -154,6 +160,7 @@ const storedUserData = data => {
     let dbObject = db.transaction("userData","readwrite").objectStore('userData');
     dbObject.add(data);
     added_question_table(data.email)
+    added_color_table(data.email)
 
 
     // prompt user to log in.
@@ -187,6 +194,18 @@ const added_question_table = mail =>{
     }
 
     let dbObject = db.transaction("userQuestions","readwrite").objectStore('userQuestions');
+    dbObject.add(data);
+    return;
+}
+
+const added_color_table = mail =>{
+    console.log(mail)
+    let data = {
+        email: mail,
+        colors:{}
+    }
+
+    let dbObject = db.transaction("userColor","readwrite").objectStore('userColor');
     dbObject.add(data);
     return;
 }
@@ -513,12 +532,14 @@ const reInitializeForm = form =>{
 
 // function removeTitle(){
 //     let transaction = db.transaction("userData","readwrite").objectStore("userData")
-//     let deleteAccount = transaction.clear()
-//     // let deleteAccount = transaction.get('emmanuelbrowne751999@gmail.com')
+//     // let deleteAccount = transaction.clear()
+//     let deleteAccount = transaction.get('emmanuelbrowne751999@gmail.com')
 //     console.log(deleteAccount)
 //     deleteAccount.onsuccess = event =>{
+//         console.log(event.target.result)
 
 //         alert("all account has been deleted");
+//         // transaction.delete(deleteAccount)
 //         // console.log(event.target.result)
 //     }
 //     deleteAccount.onerror = event =>{
