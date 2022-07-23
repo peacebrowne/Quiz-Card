@@ -256,6 +256,7 @@ card_back_icon.addEventListener('click',()=>{
     hideElement('#card')
     showElement('#quiz-back-icon')
     hideElement('#card-back-icon')
+    hide_ans()
     get_question()
     checks.forEach(c => c.style.display = 'none')
     score.textContent = 0
@@ -311,19 +312,25 @@ const score = document.querySelector('#score').children[1]
 
 const display__first_questions = q =>{
 
-    // question
-    // console.log('Random Questions:',q)
     question_bar.textContent = q[0].question;
-    question_bar.setAttribute('id',`${0}`)
-    question_number.textContent = 1
+    question_bar.setAttribute('id',`${0}`);
+    question_number.textContent = 1;
+    
+    hidden_ans.textContent = q[0].correct;
+    let answers = [q[0].correct,q[0].first,q[0].second]
+    let options = [optionA,optionB,optionC]
 
-    // options
-    optionA.textContent = q[0].optionA
-    optionB.textContent = q[0].optionB
-    optionC.textContent = q[0].optionC
-    let ca = get_correct_answer(q[0])
-    hidden_ans.textContent = ca;
+    for(const ans of options){
 
+        let rn = Math.floor(Math.random() * answers.length)
+        ans.textContent = answers[rn]
+        answers.splice(rn,1)
+
+    }
+
+}
+
+const insert_random_ans = () =>{
 
 }
 
@@ -422,10 +429,7 @@ const next_question = ev =>{
     let qn = +question_number.textContent;
     let next = qn;
     let game_over = quiz_over(next)
-
-    
     if(game_over == 'quiz finish') return;
-    
 
     question_number.textContent = next+1;
     question_bar.id = next;
@@ -433,15 +437,22 @@ const next_question = ev =>{
     let next_question = random_question[next];
     question_bar.textContent = next_question.question;
 
+    hidden_ans.textContent = next_question.correct;
+    let answers = [next_question.correct,next_question.first,next_question.second]
+    let options = [optionA,optionB,optionC]
 
-    optionA.textContent = next_question.optionA
-    optionB.textContent = next_question.optionB
-    optionC.textContent = next_question.optionC
-    let ca = get_correct_answer(next_question)
-    hidden_ans.textContent = ca;
+    for(const ans of options){
+
+        let rn = Math.floor(Math.random() * answers.length)
+        ans.textContent = answers[rn]
+        answers.splice(rn,1)
+
+    }
     checks.forEach(c => c.style.display = 'none')
 
 }
+
+
 next_btn.addEventListener('click',next_question)
 
 const quiz_over = (next) =>{

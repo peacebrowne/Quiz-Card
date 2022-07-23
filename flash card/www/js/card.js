@@ -2,9 +2,17 @@
 // logging out
 const logOut = document.getElementById('log-out')
 logOut.addEventListener('click',()=>{
-    localStorage.removeItem('email')
+    storage_remove()
     location.replace("sign_up.html")
 })
+
+const storage_remove = () =>{
+
+    localStorage.removeItem('email')
+    localStorage.removeItem('bgColor')
+    localStorage.removeItem('un')
+
+}
 
 const account_name = () =>{
     let un = localStorage.getItem('un')
@@ -60,31 +68,6 @@ const view_question = document.getElementById('view-question')
 
 let message;
 
-// // go to select option section
-// quiz.addEventListener('click',()=>{
-//     hideElement('#dropdown-icon')
-//     showElement('#quiz-back-icon')
-//     hideElement('#home-section')
-//     showElement('#form-options-section')
-// })
-
-// const select_topic = document.querySelector('#select-options .card select')
-// const number_of_questions = document.querySelector('#select-options input')
-
-// // back to home section
-// const quiz_back_icon = document.getElementById('quiz-back-icon')
-// // const quiz_back_home = document.querySelector('#select-options #back-home')
-// quiz_back_icon.addEventListener('click',()=>{
-//     showElement('#dropdown-icon')
-//     hideElement('#quiz-back-icon')
-//     showElement('#home-section')
-//     hideElement('#form-options-section')
-
-//     // reinitialize option form
-//     // select_topic.value = select_topic.children[0].value;
-//     number_of_questions.value = ''
-// })
-
 
 // add questions section
 add_question.addEventListener('click',()=>{
@@ -109,7 +92,7 @@ add_back_icon.addEventListener('click',()=>{
 
     // reinitialize add question form
     reInitializeForm(add_question_form)
-    add_question_correctAns.value = add_question_correctAns.children[0].value
+    // add_question_correctAns.value = add_question_correctAns.children[0].value
     add_question_textarea.value = ''
 
    
@@ -131,35 +114,24 @@ const add_question_data = () =>{
     questionData[add_question_textarea.name] = add_question_textarea.value;
     
     // validating for empty answers
-    for(let i = 0; i < add_question_form.length; i++){
+    for(const i of add_question_form){
+        const name = i.name.split('-')[0]
 
-        const data = add_question_form[i]
-    
-        if(data.value === ''){
+        if(i.value == ''){
 
-             Swal.fire({
+            Swal.fire({
                 icon: 'error',
-                title: `Please enter the ${data.name} answer`,
+                title: `Please enter the ${name} answer`,
                 confirmButtonText: "Close"
             })
             return ;
+
         }
-        
-        questionData[data.name] = data.value;
+
+        questionData[name] = i.value;
 
     }
-
-    if(add_question_correctAns.value === add_question_correctAns.children[0].value){
-
-        Swal.fire({
-            icon: 'error',
-            title: `Please enter the ${add_question_correctAns.name} field`,
-            confirmButtonText: "Close"
-        })
-        return ;
-
-    }
-    questionData[add_question_correctAns.name] = add_question_correctAns.value;
+   
     return questionData
 }
 
@@ -169,8 +141,6 @@ const get_added_question = data =>{
     add_question_validation(data)
 
 }
-
-
 
 
 // validatind added question
@@ -217,7 +187,7 @@ const submit_added_question = data =>{
         transaction.put(question)
 
         reInitializeForm(add_question_form)
-        add_question_correctAns.value = add_question_correctAns.children[0].value
+        // add_question_correctAns.value = add_question_correctAns.children[0].value
         add_question_textarea.value = ''
         Swal.fire({
             title: `Question Successfully ${message}`,
@@ -252,7 +222,7 @@ view_question.addEventListener('click', ev => {
 const view_question_bar = document.getElementById('view-question-section')
 const view_question_bar_title = document.querySelector('#view-question-section .title')
 const view_back_icon = document.getElementById('view-back-icon')
-view_back_icon.addEventListener('click', ev=>{
+view_back_icon.addEventListener('click', ev =>{
 
     hideElement('#view-question-section')
     hideElement('#search-form')
@@ -314,26 +284,13 @@ const display_user_questions = questions =>{
     }
 
     questions.forEach( question => {
-       let ans =  get_correct_answer(question)
-    
-       question.ans = ans;
 
         views(question)
+
     })
 
 }
 
-const get_correct_answer = q =>{
-
-    let result = Array.of(q.correctAnswer).flatMap(a => a.split('-')).join('');
-    
-    let convertion = Object.entries(q)
-
-    let ans = convertion.find(a => a[0] === result)
-
-    return ans[1]
-
-}
 
 const views = q =>{
 
@@ -350,7 +307,7 @@ const views = q =>{
         </div>
         <div class="view-answer form-control">
             <span>
-                <strong>Ans:</strong> ${q.ans}
+                <strong>Ans:</strong> ${q.correct}
             </span>
         </div>
         <div class="view-btn form-control">
@@ -361,18 +318,11 @@ const views = q =>{
             ${q.topic}
         </span>
         <span class="a" style="display:none">
-            ${q.optionA}
+            ${q.first}
         </span>
         <span class="b" style="display:none">
-            ${q.optionB}
+            ${q.second}
         </span>
-        <span class="c" style="display:none">
-            ${q.optionC}
-        </span>
-        <span class="ca" style="display:none">
-            ${q.correctAnswer}
-        </span>
-
     
     `
 
@@ -451,14 +401,13 @@ const remove_question = ev =>{
 const edit_question_SubmitBtn = document.querySelector('#edit-question-section #submit-btn')
 const edit_question_topic = document.querySelector('#edit-question-section #topic')
 const edit_quiz_question = document.querySelector('#edit-question-section textarea')
-const edit_question_optionA = document.querySelector('#edit-question-section #option-A')
-const edit_question_optionB = document.querySelector('#edit-question-section #option-B')
-const edit_question_optionC = document.querySelector('#edit-question-section #option-C')
-const edit_question_correctAns = document.querySelector('#edit-question-section select')
+const edit_correct_answer = document.querySelector('#edit-question-section #correct-ans')
+const edit_first_option = document.querySelector('#edit-question-section #first-option')
+const edit_second_option = document.querySelector('#edit-question-section #second-option')
+// const edit_question_correctAns = document.querySelector('#edit-question-section select')
 // const edit_question_backBtn = document.querySelector('#edit-question-section #back-home')
 let editQ_id;
 let question_index;
-
 // edit question btn
 const edit_questionBtn = ()=>{
 
@@ -480,6 +429,7 @@ const edit_questionBtn = ()=>{
                 let data = event.target.result
                 let result = data.questions
                 let question = result.find( q => q.id === editQ_id)
+                // console.log(question)
                 question_index = result.indexOf(question)
                 open_editor(question)
                 
@@ -494,7 +444,6 @@ const edit_questionBtn = ()=>{
 
 // display question editor
 const open_editor = question =>{
-
     hideElement('#view-question-section')
     showElement('#edit-question-section')
     showElement('#edit-back-icon')
@@ -504,10 +453,9 @@ const open_editor = question =>{
 
     edit_question_topic.value = question.topic
     edit_quiz_question.value = question.question
-    edit_question_optionA.value = question.optionA
-    edit_question_optionB.value = question.optionB
-    edit_question_optionC.value = question.optionC
-    edit_question_correctAns.value = question.correctAnswer
+    edit_correct_answer.value = question.correct;
+    edit_first_option.value = question.first;
+    edit_second_option.value = question.second;
 
 }
 
@@ -516,53 +464,31 @@ const question_editor = () => {
     let userData = {};
     let  edit_question_form = document.querySelectorAll('#edit-question-section input')
 
-    for(let i = 0; i < edit_question_form.length; i++){
-
-        const data = edit_question_form[i]
-    
-        if(data.value === ''){
-
-             Swal.fire({
-                icon: 'error',
-                title: `Please enter the ${data.name} field`,
-                confirmButtonText: "Close"
-            })
-            return ;
-        }
+    for(const i of edit_question_form){
+        const name = i.name.split('-')[0];
         
-        userData[data.name] = data.value;
+        if(i.value === ''){
+
+            Swal.fire({
+               icon: 'error',
+               title: `Please enter the ${name} field`,
+               confirmButtonText: "Close"
+           })
+           return ;
+       }
+       userData[name] = i.value;
 
     }
-
-    if(edit_question_correctAns.value !== ''){
-        userData[edit_question_correctAns.name] = edit_question_correctAns.value
-    }else{
-        Swal.fire({
-            icon: 'error',
-            title: `Please enter the ${edit_question_correctAns.name} field`,
-            confirmButtonText: "Close"
-        })
-        return;
-    }
-
-    if(edit_quiz_question.value !== ''){
-        userData[edit_quiz_question.name] = edit_quiz_question.value
-    }else{
-        Swal.fire({
-            icon: 'error',
-            title: `Please enter the ${edit_quiz_question.name} field`,
-            confirmButtonText: "Close"
-        })
-        return;
-    }
-
+    userData[edit_quiz_question.name] = edit_quiz_question.value
     userData["id"] = editQ_id
     return userData
+    // console.log(userData)
 
 }
 
 const submit_edit_question = editQ =>{
     message = 'edited'
+ 
     // make transaction with db to get edited question by it's id
     let transaction = db.transaction("userQuestions","readwrite").objectStore('userQuestions');
     let dbObject = transaction.get(email)
@@ -571,7 +497,7 @@ const submit_edit_question = editQ =>{
 
         let result = event.target.result;
         let question = result.questions;
-        question.fill(editQ,question_index,question_index+1)
+        question[question_index] = editQ;
         transaction.put(result)
         Swal.fire({
             title: `Question Successfully ${message}`,
